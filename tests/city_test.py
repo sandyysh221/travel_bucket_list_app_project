@@ -10,4 +10,4 @@ class TestCity(unittest.TestCase):
         self.assertEqual("Ottawa", self.city.name)
 
     def test_city_has_country_id(self):
-        self.assertEqual(1, self.city.country_id)
+        self.assertEqual(1, self.city.country)

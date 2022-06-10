@@ -8,12 +8,19 @@ def delete_all():
 
 
 def delete(id):
-    pass
+    sql = "DELETE FROM attractions WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
 
 
 def save(attraction):
     sql = "INSERT INTO attractions (name, description, city_id, date) VALUES (%s, %s, %s, %s) RETURNING id"
-    values = [attraction.name, attraction.description, attraction.city.id, attraction.date]
+    values = [
+        attraction.name,
+        attraction.description,
+        attraction.city.id,
+        attraction.date,
+    ]
     results = run_sql(sql, values)
     attraction.id = results[0]["id"]
     return attraction

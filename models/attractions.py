@@ -1,5 +1,11 @@
-class Country:
-    def __init__(self, name, region, id):
+class Attraction:
+    def __init__(self, name, description, city_id, date, id, visited=False):
         self.name = name
-        self.region = region
+        self.description = description
+        self.city_id = city_id
+        self.date = date
         self.id = id
+        self.visited = visited
+
+    def set_visited(self):
+        self.visited = True

@@ -8,7 +8,9 @@ def delete_all():
 
 
 def delete(id):
-    pass
+    sql = "DELETE FROM cities WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
 
 
 def save(city):

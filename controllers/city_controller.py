@@ -5,7 +5,7 @@ import repositories.city_repository as city_repository
 
 cities_blueprint = Blueprint("city", __name__)
 
-
+# Goes to Cities homepage listing all the cities in the database
 @cities_blueprint.route("/cities")
 def cities():
     cities = city_repository.select_all()

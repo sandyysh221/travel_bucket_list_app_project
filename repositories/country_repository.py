@@ -26,7 +26,7 @@ def select_all():
     sql = "SELECT * FROM countries"
     results = run_sql(sql)
     for row in results:
-        country = Country(row["name"], row["region"], row["id"])
+        country = Country(row["name"], row["region"],row["code"], row["id"])
         countries.append(country)
     return countries
 
@@ -38,7 +38,9 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        country = Country(result["name"], result["region"], result["id"])
+        country = Country(
+            result["name"], result["region"], result["code"], result["id"]
+        )
     return country
 
 

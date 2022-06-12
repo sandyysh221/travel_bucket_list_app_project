@@ -1,15 +1,17 @@
 {% extends "base.html" %} {% block content %}
-<h1>Countries still to kick off the bucket</h1>
+<h1 class="text-center">Bucket list progress on countries:</h1>
 <div class="container">
   <h3><a href="/countries/new">Add New Country</a></h3>
-  {% for country in all_countries %}
-  <p>Country: <a href="/countries/{{country.id}}">{{country.name}}</a></p>
-  <p>
-    Visited: {% if all_countries.visited == True %}
-    <i class="fa fa-check fa-2x" style="color: green" aria-hidden="true"></i>
-    {% else %}
-    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-    {% endif %}
-  </p>
-  {% endfor %}{% endblock %}
+
+  <div class="country-list">
+    {% for country in all_countries %}
+    <p>Country: <a href="/countries/{{country.id}}">{{country.name}}</a></p>
+    <p>
+      {% if all_countries.visited == True %}
+      <i class="fa fa-check fa-2x" style="color: green" aria-hidden="true"></i>
+      {% else %}
+      <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+      {% endif %} {% endfor %}{% endblock %}
+    </p>
+  </div>
 </div>

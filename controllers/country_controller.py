@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.country import Country
+from models.countries_list import all_countries_list as list_of_all_countries
 import repositories.country_repository as country_repository
 
 countries_blueprint = Blueprint("country", __name__)
@@ -43,17 +44,22 @@ def update_country(id):
     return redirect("/countries")
 
 
-# @countries_blueprint.route("/countries/new", methods=["GET"])
-# def new_country():
-#     countries = country_repository.select_all()
-#     return render_template("countries/new.html", countries=countries)
+@countries_blueprint.route("/countries/new", methods=["GET"])
+def new_country():
+    countries = country_repository.select_all()
+    return render_template(
+        "countries/new.html",
+        countries=countries,
+        list_of_countries=list_of_all_countries,
+    )
 
 
-# @countries_blueprint.route("/countries", methods=["POST"])
-# def create_country():
-#     name = request.form["name"]
-#     new_country = Country(name, None, None)
-#     new_country.region = new_country.get_country_by_name(country)["continent"]
-#     new_country.code = new_country.get_country_by_name(country)["code"]
-#     country_repository.save(new_country)
-#     return redirect("/countries")
+@countries_blueprint.route("/countries", methods=["POST"])
+def create_country():
+    country = request.form["country"]
+    new_country = Country(country, None, None)
+    new_country_region = new_country.get_country_by_name(country)["continent"]
+    new_country_code = new_country.get_country_by_name(country)["code"]
+    new_country = Country(country, new_country_region, new_country_code)
+    country_repository.save(new_country)
+    return redirect("/countries")

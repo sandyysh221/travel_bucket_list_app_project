@@ -26,7 +26,7 @@ def select_all():
     sql = "SELECT * FROM countries"
     results = run_sql(sql)
     for row in results:
-        country = Country(row["name"], row["region"],row["code"], row["id"])
+        country = Country(row["name"], row["region"], row["code"], row["id"])
         countries.append(country)
     return countries
 
@@ -45,7 +45,9 @@ def select(id):
 
 
 def update(country):
-    pass
+    sql = "UPDATE countries SET (name, region, code) = (%s, %s, %s) WHERE id = %s"
+    values = [country.name, country.region, country.code, country.id]
+    run_sql(sql, values)
 
 
 def find_city_in_country(country):

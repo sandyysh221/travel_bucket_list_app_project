@@ -22,23 +22,25 @@ def show(id):
     )
 
 
-# @countries_blueprint.route("/countries/<id>/edit")
-# def edit_country(id):
-#     country = country_repository.select(id)
-#     countries = country_repository.select_all()
-#     return render_template(
-#         "/countries/edit.html", country=country, all_countries=countries
-#     )
+# Goes to page to update country
+@countries_blueprint.route("/countries/<id>/edit")
+def edit_country(id):
+    country = country_repository.select(id)
+    countries = country_repository.select_all()
+    return render_template(
+        "/countries/edit.html", country=country, all_countries=countries
+    )
 
 
-# @countries_blueprint.route("/countries/<id>", methods=["POST"])
-# def update_country(id):
-#     country_id = request.form["country_id"]
-#     name = country_repository.select(country_id)
-#     region = request.form["region"]
-#     country = Country(name, region, id)
-#     country_repository.update(country)
-#     return redirect("/countries")
+# To update a country
+@countries_blueprint.route("/countries/<id>", methods=["POST"])
+def update_country(id):
+    country_name = request.form["country"]
+    region = request.form["region"]
+    code = country_repository.select(id)
+    country_update = Country(country_name, region, code, id)
+    country_repository.update(country_update)
+    return redirect("/countries")
 
 
 # @countries_blueprint.route("/countries/new", methods=["GET"])

@@ -5,7 +5,7 @@
     <form action="/countries/{{country.id}}" method="post">
 <div>
     <label for="country">Country:</label>
-    <select id="country" name="country_id">
+    <select id="country" name="country">
       {% for country in all_countries %}
         <option value="{{ country.id }}"
           {% if country.id== country.id %} selected="selected"{% endif %}>
@@ -19,6 +19,24 @@
     <label for="region">Region:</label>
     <input type="region" id="region" name="region" value="{{country.region}}" required>
   </div>
+
+  <div>
+    <label for="visited">Visited:</label>
+    <select id="visited" name="visited">
+
+      <option value="true"
+        {% if country.visited== True %} selected="selected" {% endif %}>
+        True
+      </option>
+
+      <option value="false"
+        {% if country.visited == False %} selected="selected" {% endif %}>
+        False
+      </option>
+
+    </select>
+  </div>
+
 
   <button type="submit">Update Country</button>
 </form>

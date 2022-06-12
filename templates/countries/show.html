@@ -1,1 +1,20 @@
-{% extends 'base.html' %} {% block content %} Hello World {% endblock content %}
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+<h3>About {{country.name}}:</h3>
+<span>Region: {{country.region}}</span><br />
+<span>Cities in {{country.name}}:</span><br />
+{% for city in function %}
+<ul>
+  <li>
+{{function[city].name}}
+  </li>
+</ul>
+{% endfor %}
+<span><a href="/countries/{{country.id}}/edit">Edit</a></p></span
+><br />
+<span>Mark as visited:</span><br />
+<span>Visited on:</span><br />
+</div>
+
+{% endblock %}

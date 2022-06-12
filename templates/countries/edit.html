@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <form action="/countries/{{country.id}}" method="post">
+<div>
+    <label for="country">Country:</label>
+    <select id="country" name="country_id">
+      {% for country in all_countries %}
+        <option value="{{ country.id }}"
+          {% if country.id== country.id %} selected="selected"{% endif %}>
+          {{ country.name }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div>
+    <label for="region">Region:</label>
+    <input type="region" id="region" name="region" value="{{country.region}}" required>
+  </div>
+
+  <button type="submit">Update Country</button>
+</form>
+</div>
+
+{% endblock  %}

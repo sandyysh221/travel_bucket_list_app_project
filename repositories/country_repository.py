@@ -44,3 +44,15 @@ def select(id):
 
 def update(country):
     pass
+
+
+def find_city_in_country(country):
+    country_cities = []
+    sql = "SELECT * FROM cities WHERE country_id = %s%"
+    values = [country.id]
+    result = run_sql(sql, values)
+
+    for row in result:
+        city = City(row["name"], row["country"], row["id"])
+        country_cities.append(city)
+    return country_cities

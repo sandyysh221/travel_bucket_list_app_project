@@ -15,7 +15,7 @@ class TestAttraction(unittest.TestCase):
         self.assertEqual("Amusement Park", self.attraction.description)
 
     def test_attraction_has_city_id(self):
-        self.assertEqual(1, self.attraction.city_id)
+        self.assertEqual(1, self.attraction.city)
 
     def test_attraction_has_date(self):
         self.assertEqual("1 July", self.attraction.date)

@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <form action="/countries" method="post">
+    <div>
+      <p>Fill in the form below to add a new country to the bucket list!</p>
+      <label for="name">Country:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="name"
+        required
+        autofocus
+      />
+    </div>
+
+    <div>
+      <label for="region">Region:</label>
+      <input
+        type="text"
+        id="region"
+        name="region"
+        placeholder="Region"
+        required
+      />
+    </div>
+
+    <button type="submit">Add Country</button>
+  </form>
+</div>
+{% endblock %}

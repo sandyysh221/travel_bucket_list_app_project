@@ -1,27 +1,15 @@
 {% extends "base.html" %} {% block content %}
-<h3><a href="">Add New Country</a></h3>
+<h1>Countries still to kick off the bucket</h1>
 <div class="container">
-  <h1>Countries still to kick off the bucket</h1>
-  <div class="img-gallery-container">
-    {% for country in countries %}
-
-    <a href="countries/{{country.id}}"
-      ><img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="Kyoto"
-    /></a>
-    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
-    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
-    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
-    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
-    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
-    {% endfor %}
-  </div>
-  <h1>Countries kicked off the bucket...</h1>
-  <div class="img-gallery-container">
-    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
-    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
-    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
-    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
-  </div>
+  <h3><a href="/countries/new">Add New Country</a></h3>
+  {% for country in all_countries %}
+  <p>Country: <a href="/countries/{{country.id}}">{{country.name}}</a></p>
+  <p>
+    Visited: {% if all_countries.visited == True %}
+    <i class="fa fa-check fa-2x" style="color: green" aria-hidden="true"></i>
+    {% else %}
+    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+    {% endif %}
+  </p>
+  {% endfor %}{% endblock %}
 </div>
-
-{% endblock %}

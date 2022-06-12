@@ -1,1 +1,27 @@
-{% extends "base.html" %} {% block content %} Hello World {% endblock %}
+{% extends "base.html" %} {% block content %}
+<h3><a href="">Add New Country</a></h3>
+<div class="container">
+  <h1>Countries still to kick off the bucket</h1>
+  <div class="img-gallery-container">
+    {% for country in countries %}
+
+    <a href="countries/{{country.id}}"
+      ><img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="Kyoto"
+    /></a>
+    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
+    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
+    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
+    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
+    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
+    {% endfor %}
+  </div>
+  <h1>Countries kicked off the bucket...</h1>
+  <div class="img-gallery-container">
+    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
+    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
+    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
+    <img src="static/images/index/kyoto_pexels-dsd-1822605.jpg" alt="" />
+  </div>
+</div>
+
+{% endblock %}

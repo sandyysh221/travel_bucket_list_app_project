@@ -43,13 +43,11 @@ header > nav > ul {
   gap: 1rem;
 }
 
-header > nav > ul > li > a {
-  font-size: 1.5rem;
+a {
   text-decoration: none;
 }
 
-header > nav > ul > li > a:hover {
-  font-size: 1.5rem;
+a:hover {
   text-decoration: underline;
   color: var(--accent-color);
 }
@@ -65,6 +63,7 @@ blockquote {
   background-color: rgb(223, 189, 192, 0.8);
   color: var(--secondary-color);
   padding: 25px;
+  box-shadow: var(--box-shadow);
 }
 
 .img-gallery-container {
@@ -79,4 +78,30 @@ blockquote {
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
   max-width: 100%;
   max-height: 100%;
+}
+
+.display-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 20px;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.display-box {
+  background-color: #e9dce3;
+  border: 1px solid var(--secondary-color);
+  padding: 20px;
+  text-align: left;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
 }

@@ -3,15 +3,24 @@
 <div class="container">
   <h3><a href="/countries/new">Add New Country</a></h3>
 
-  <div class="country-list">
-    {% for country in all_countries %}
-    <p>Country: <a href="/countries/{{country.id}}">{{country.name}}</a></p>
-    <p>
-      {% if country.visited == True %}
-      <i class="fa fa-check fa-2x" style="color: green" aria-hidden="true"></i>
-      {% else %}
-      <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-      {% endif %} {% endfor %}{% endblock %}
-    </p>
+  <div>
+    <ul class="display-list">
+      {% for country in all_countries %}
+      <li class="display-box flex-grow">
+        Country: <a href="/countries/{{country.id}}">{{country.name}}</a>
+        <p>
+          {% if country.visited == True %}
+          <i
+            class="fa fa-check fa-2x"
+            style="color: green"
+            aria-hidden="true"
+          ></i>
+          {% else %}
+          <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+        </p>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
   </div>
 </div>
+{% endblock %}

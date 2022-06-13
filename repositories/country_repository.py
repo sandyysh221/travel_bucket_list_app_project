@@ -15,8 +15,14 @@ def delete(id):
 
 
 def save(country):
-    sql = "INSERT INTO countries(name, code, region, visited) VALUES (%s, %s, %s, %s) RETURNING id"
-    values = [country.name, country.code, country.region, country.visited]
+    sql = "INSERT INTO countries(name, code, region, capital, visited) VALUES (%s, %s, %s, %s, %s) RETURNING id"
+    values = [
+        country.name,
+        country.code,
+        country.region,
+        country.capital,
+        country.visited,
+    ]
     results = run_sql(sql, values)
     country.id = results[0]["id"]
     return country
@@ -28,7 +34,12 @@ def select_all():
     results = run_sql(sql)
     for row in results:
         country = Country(
-            row["name"], row["region"], row["code"], row["visited"], row["id"]
+            row["name"],
+            row["region"],
+            row["code"],
+            row["capital"],
+            row["visited"],
+            row["id"],
         )
         countries.append(country)
     return countries
@@ -45,6 +56,7 @@ def select(id):
             result["name"],
             result["region"],
             result["code"],
+            result["capital"],
             result["visited"],
             result["id"],
         )
@@ -52,8 +64,15 @@ def select(id):
 
 
 def update(country):
-    sql = "UPDATE countries SET (name, region, code, visited) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [country.name, country.region, country.code, country.visited, country.id]
+    sql = "UPDATE countries SET (name, region, code, capital, visited) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [
+        country.name,
+        country.region,
+        country.code,
+        country.capital,
+        country.visited,
+        country.id,
+    ]
     run_sql(sql, values)
 
 

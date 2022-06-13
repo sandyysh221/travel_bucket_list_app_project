@@ -7,6 +7,7 @@ CREATE TABLE countries (
     name VARCHAR(255),
     region VARCHAR(255),
     code VARCHAR(255),
+    capital VARCHAR(255),
     visited BOOLEAN
 );
 

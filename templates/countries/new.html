@@ -1,19 +1,24 @@
 {% extends 'base.html' %} {% block content %}
-<h3>Add a new country to the bucket list!</h3>
-<form action="/countries" method="POST">
-  <select id="country" name="country" class="form-control">
-    <optgroup label="My Countries">
-      {% for country in countries %}
-      <option value="{{ country.name }}" disabled>{{ country.name }}</option>
-      {% endfor %}
-    </optgroup>
-    <optgroup label="World">
-      {% for new_country in list_of_countries %}
-      <option value="{{new_country['name']}}">{{ new_country['name'] }}</option>
 
-      {% endfor %}
-    </optgroup>
-  </select>
-  <button type="submit">Add New Country</button>
-</form>
+<div class="detail-container">
+  <h3>Add a new country to the bucket list!</h3>
+  <form action="/countries" method="POST">
+    <select id="country" name="country" class="form-control">
+      <optgroup label="My Countries">
+        {% for country in countries %}
+        <option value="{{ country.name }}" disabled>{{ country.name }}</option>
+        {% endfor %}
+      </optgroup>
+      <optgroup label="List of Countries">
+        {% for new_country in list_of_countries %}
+        <option value="{{new_country['name']}}">
+          {{ new_country['name'] }}
+        </option>
+
+        {% endfor %}
+      </optgroup>
+    </select>
+    <p><button type="submit">Add New Country</button></p>
+  </form>
+</div>
 {% endblock content %}

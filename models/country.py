@@ -2,10 +2,11 @@ from models.countries_list import all_countries_list
 
 
 class Country:
-    def __init__(self, name, region, code, visited=False, id=None):
+    def __init__(self, name, region, code, capital, visited=False, id=None):
         self.name = name
         self.region = region
         self.code = code
+        self.capital = capital
         self.visited = visited
         self.id = id
         self.country_list = all_countries_list

@@ -1,11 +1,26 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="detail-container">
-  <h3 class="text-center">About {{country.name}}:</h3>
+  <h3>About {{country.name}}:</h3>
+  <p>
+    {{country.name}}'s Flag:
+    <img
+      src="https://flagcdn.com/36x27/{{country.code.lower()}}.png"
+      srcset="
+        https://flagcdn.com/72x54/{{country.code.lower()}}.png  2x,
+        https://flagcdn.com/108x81/{{country.code.lower()}}.png 3x
+      "
+      width="36"
+      height="27"
+      alt="{{country.name}}"
+    />
+  </p>
+  <p>Country Code: {{country.code}}</p>
+  <p>Capital City: {{country.capital}}</p>
   <p>Continent: {{country.region}}</p>
   <p>Cities in {{country.name}} that are on my bucket list:</p>
   {% for city in city_in_country %}
-  <ul>
+  <ul class="bullet-point">
     <li>{{city.name}}</li>
   </ul>
   {% endfor %}
@@ -20,7 +35,16 @@
     method="post"
     method="POST"
   >
-    <button type="submit">Take off the bucket list!</button>
+    <button type="submit">
+      Been there, done that
+      <i
+        class="fa-solid fa-circle-check"
+        style="color: green"
+        aria-hidden="true"
+      >
+      </i>
+      🥳
+    </button>
   </form>
 </div>
 

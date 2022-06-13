@@ -41,7 +41,8 @@ def update_country(id):
     visited = request.form["visited"]
     print(visited)
     code = country_repository.select(id).code
-    country_update = Country(name, region, code, visited, id)
+    capital = country_repository.select(id).capital
+    country_update = Country(name, region, code, capital, visited, id)
     country_repository.update(country_update)
     return redirect("/countries")
 
@@ -70,10 +71,13 @@ def new_country():
 @countries_blueprint.route("/countries", methods=["POST"])
 def create_country():
     country = request.form["country"]
-    new_country = Country(country, None, None)
+    new_country = Country(country, None, None, None)
     new_country_region = new_country.get_country_by_name(country)["continent"]
     new_country_code = new_country.get_country_by_name(country)["code"]
-    new_country = Country(country, new_country_region, new_country_code)
+    new_country_capital = new_country.get_country_by_name(country)["capital"]
+    new_country = Country(
+        country, new_country_region, new_country_code, new_country_capital
+    )
     country_repository.save(new_country)
     return redirect("/countries")
 

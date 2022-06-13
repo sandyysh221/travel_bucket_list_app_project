@@ -1,41 +1,45 @@
 {% extends 'base.html' %} {% block content %}
 
-<form action="/cities" method="post">
-  <div>
-    <label for="name">Name:</label>
-    <input
-      type="text"
-      id="name"
-      name="name"
-      placeholder="name"
-      required
-      autofocus
-    />
-  </div>
+<div class="detail-container">
+  <h3>Add a new city to the bucket list!</h3>
+  <form action="/cities" method="post">
+    <div>
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="City"
+        required
+        autofocus
+      />
+    </div>
 
-  <select id="country" name="country" class="form-control">
-    <optgroup label="My Countries">
-      {% for country in countries %}
-      <option value="{{ country.name }}">{{ country.name }}</option>
-      {% endfor %}
-    </optgroup>
-    <optgroup label="List of Countries">
-      {% for new_country in list_of_countries %}
-      <option value="{{new_country['name']}}">{{ new_country['name'] }}</option>
+    <select id="country" name="country" class="form-control">
+      <optgroup label="My Countries">
+        {% for country in countries %}
+        <option value="{{ country.name }}">{{ country.name }}</option>
+        {% endfor %}
+      </optgroup>
+      <optgroup label="List of Countries">
+        {% for new_country in list_of_countries %}
+        <option value="{{new_country['name']}}">
+          {{ new_country['name'] }}
+        </option>
 
-      {% endfor %}
-    </optgroup>
-  </select>
-
-  <div>
-    <label for="visited">Visited:</label>
-    <select id="visited" name="visited">
-      <option value="true">True</option>
-      <option value="false">False</option>
+        {% endfor %}
+      </optgroup>
     </select>
-  </div>
 
-  <button type="submit">Add New City</button>
-</form>
+    <div>
+      <label for="visited">Visited:</label>
+      <select id="visited" name="visited">
+        <option value="true">True</option>
+        <option value="false">False</option>
+      </select>
+    </div>
+    <p><button type="submit">Add New City</button></p>
+  </form>
+</div>
 
 {% endblock content %}

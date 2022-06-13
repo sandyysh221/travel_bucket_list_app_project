@@ -36,10 +36,13 @@ def new_city():
 def create_city():
     name = request.form["name"]
     country = request.form["country"]
-    new_country = Country(country, None, None)
+    new_country = Country(country, None, None, None)
     new_country_region = new_country.get_country_by_name(country)["continent"]
     new_country_code = new_country.get_country_by_name(country)["code"]
-    new_country = Country(country, new_country_region, new_country_code)
+    new_country_capital = new_country.get_country_by_name(country)["capital"]
+    new_country = Country(
+        country, new_country_region, new_country_code, new_country_capital
+    )
     new_country = country_repository.save(new_country)
     visited = request.form["visited"]
     city = City(name, new_country, visited)

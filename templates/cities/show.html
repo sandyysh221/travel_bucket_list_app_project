@@ -1,37 +1,67 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="container">
+<div class="detail-container">
   <h3>About {{city.name}}:</h3>
-
-  <span>Country: {{city.country.name}}</span><br />
-  <span
-    >Visited: {% if city.visited == True %}
-    <i class="fa fa-check fa-2x" style="color: green" aria-hidden="true"></i>
+  <p>Country: {{city.country.name}}</p>
+  <p>
+    {{city.country.name}}'s Flag:
+    <img
+      src="https://flagcdn.com/36x27/{{city.country.code.lower()}}.png"
+      srcset="
+        https://flagcdn.com/72x54/{{city.country.code.lower()}}.png  2x,
+        https://flagcdn.com/108x81/{{city.country.code.lower()}}.png 3x
+      "
+      width="36"
+      height="27"
+      alt="{{city.country.name}}"
+    />
+  </p>
+  <p>
+    Visited: {% if city.visited == True %}
+    <i
+      class="fa-solid fa-circle-check fa-xl"
+      style="color: green"
+      aria-hidden="true"
+    >
+    </i>
     {% else %}
-    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-    {% endif %} </span
-  ><br />
-  <div class="buttons">
-    <form class="delete-city" action="/cities/{{city.id}}/delete" method="POST">
-      <button class="trash-button">
-        <i
-          class="fa-solid fa-circle-xmark fa-xl"
-          style="color: red"
-          aria-hidden="true"
-        ></i>
-      </button>
-    </form>
-  </div>
+    <i
+      class="fa-solid fa-circle-xmark fa-xl"
+      style="color: red"
+      aria-hidden="true"
+    ></i>
+  </p>
 
-  <div></div>
   <form
     class="visited-city"
     action="/cities/{{city.id}}"
     method="post"
     method="POST"
   >
-    <button type="submit">Take off the bucket list!</button>
+    <button type="submit">
+      Been there, done that
+      <i
+        class="fa-solid fa-circle-check"
+        style="color: green"
+        aria-hidden="true"
+      >
+      </i>
+      🥳
+    </button>
   </form>
-</div>
+  {% endif %}
+  <p></p>
 
-{% endblock %}
+  <div class="buttons">
+    <form class="delete-city" action="/cities/{{city.id}}/delete" method="POST">
+      <button class="trash-button">
+        <i
+          class="fa-regular fa-trash-can fa-3x"
+          style="color: red"
+          aria-hidden="true"
+        ></i>
+      </button>
+    </form>
+  </div>
+  {% endblock %}
+</div>

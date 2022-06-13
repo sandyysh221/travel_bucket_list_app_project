@@ -5,5 +5,13 @@
   {% for city in all_cities%}
   <p>City: <a href="/cities/{{city.id}}">{{city.name}}</a></p>
 
+  <span
+    {% if city.visited == True %}
+    <i class="fa fa-check fa-2x" style="color: green" aria-hidden="true"></i>
+    {% else %}
+    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+    {% endif %}
+  </span>
+
   {% endfor %}{% endblock %}
 </div>

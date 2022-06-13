@@ -45,3 +45,11 @@ def create_city():
 def show(id):
     city = city_repository.select(id)
     return render_template("cities/show.html", city=city)
+
+
+# Goes to page to update city
+@cities_blueprint.route("/cities/<id>/edit")
+def edit_city(id):
+    city = city_repository.select(id)
+    cities = city_repository.select_all()
+    return render_template("/cities/edit.html", city=city, all_cities=cities)

@@ -1,1 +1,20 @@
-{% extends 'base.html' %} {% block content %} Hello World {% endblock content %}
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <h3>About {{city.name}}:</h3>
+
+  <span>Country: {{city.country.name}}</span><br />
+  <span>Visited: 
+      {% if city.visited == True %}
+      <i class="fa fa-check fa-2x" style="color: green" aria-hidden="true"></i>
+      {% else %}
+      <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+      {% endif %}
+  </span><br />
+
+
+<span><a href="/cities/{{city.id}}/edit">Edit</a></p></span
+>
+</div>
+
+{% endblock %}

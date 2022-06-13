@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.country import Country
+from models.city import City
 
 
 def delete_all():
@@ -14,8 +15,8 @@ def delete(id):
 
 
 def save(country):
-    sql = "INSERT INTO countries(name, region) VALUES (%s, %s) RETURNING id"
-    values = [country.name, country.region]
+    sql = "INSERT INTO countries(name, code, region, visited) VALUES (%s, %s, %s, %s) RETURNING id"
+    values = [country.name, country.code, country.region, country.visited]
     results = run_sql(sql, values)
     country.id = results[0]["id"]
     return country
@@ -26,7 +27,9 @@ def select_all():
     sql = "SELECT * FROM countries"
     results = run_sql(sql)
     for row in results:
-        country = Country(row["name"], row["region"], row["code"], row["id"])
+        country = Country(
+            row["name"], row["region"], row["code"], row["visited"], row["id"]
+        )
         countries.append(country)
     return countries
 
@@ -39,24 +42,28 @@ def select(id):
 
     if result is not None:
         country = Country(
-            result["name"], result["region"], result["code"], result["id"]
+            result["name"],
+            result["region"],
+            result["code"],
+            result["visited"],
+            result["id"],
         )
     return country
 
 
 def update(country):
-    sql = "UPDATE countries SET (name, region, code) = (%s, %s, %s) WHERE id = %s"
-    values = [country.name, country.region, country.code, country.id]
+    sql = "UPDATE countries SET (name, region, code, visited) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [country.name, country.region, country.code, country.visited, country.id]
     run_sql(sql, values)
 
 
 def find_city_in_country(country):
     country_cities = []
-    sql = "SELECT * FROM cities WHERE country_id = %s%"
+    sql = "SELECT * FROM cities WHERE country_id = %s"
     values = [country.id]
     result = run_sql(sql, values)
 
     for row in result:
-        city = City(row["name"], row["country"], row["id"])
+        city = City(row["name"], country, row["id"])
         country_cities.append(city)
     return country_cities

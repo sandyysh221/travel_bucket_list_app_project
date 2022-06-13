@@ -6,7 +6,8 @@ CREATE TABLE countries (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     region VARCHAR(255),
-    code VARCHAR(255)
+    code VARCHAR(255),
+    visited BOOLEAN
 );
 
 CREATE TABLE cities (

@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.city import City
+from models.country import Country
+from models.countries_list import all_countries_list as list_of_all_countries
 import repositories.city_repository as city_repository
+import repositories.country_repository as country_repository
 
 cities_blueprint = Blueprint("city", __name__)
 
@@ -17,11 +20,16 @@ def cities():
 def new_city():
     cities = city_repository.select_all()
     return render_template(
-        "cities/new.html",
-        cities=cities,
+        "cities/new.html", cities=cities, list_of_countries=list_of_all_countries
     )
 
 
 # Adds new city to the list
 @cities_blueprint.route("/cities", methods=["POST"])
 def create_city():
+    name = request.form["name"]
+    country = request.form["country"]
+    visited = request.form["completed"]
+    city = City(name, country)
+    city_repository.save(city)
+    return redirect("/cities")

@@ -4,10 +4,10 @@
 <h3>About {{country.name}}:</h3>
 <span>Region: {{country.region}}</span><br />
 <span>Cities in {{country.name}}:</span><br />
-{% for city in function %}
+{% for city in city_in_country %}
 <ul>
   <li>
-{{function[city].name}}
+{{city.name}}
   </li>
 </ul>
 {% endfor %}

@@ -10,8 +10,6 @@ countries_blueprint = Blueprint("country", __name__)
 @countries_blueprint.route("/countries")
 def countries():
     countries = country_repository.select_all()
-    # country = country_repository.select_all().id
-    # city_function = country_repository.find_city_in_country(country)
     return render_template("countries/index.html", all_countries=countries)
 
 
@@ -38,10 +36,12 @@ def edit_country(id):
 # To update a country
 @countries_blueprint.route("/countries/<id>", methods=["POST"])
 def update_country(id):
-    country_name = request.form["country"]
+    name = request.form["name"]
     region = request.form["region"]
-    code = country_repository.select(id)
-    country_update = Country(country_name, region, code, id)
+    visited = request.form["visited"]
+    print(visited)
+    code = country_repository.select(id).code
+    country_update = Country(name, region, code, visited, id)
     country_repository.update(country_update)
     return redirect("/countries")
 

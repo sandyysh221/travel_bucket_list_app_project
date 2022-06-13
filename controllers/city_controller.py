@@ -38,3 +38,10 @@ def create_city():
     city = City(name, new_country, visited)
     city_repository.save(city)
     return redirect("/cities")
+
+
+# Goes to the city's page to list info
+@cities_blueprint.route("/cities/<id>")
+def show(id):
+    city = city_repository.select(id)
+    return render_template("cities/show.html", city=city)

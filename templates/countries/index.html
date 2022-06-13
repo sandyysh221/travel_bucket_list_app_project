@@ -7,7 +7,7 @@
     <ul class="display-list">
       {% for country in all_countries %}
       <li class="display-box flex-grow">
-        Country: <a href="/countries/{{country.id}}">{{country.name}}</a>
+        {{country.name}}
         <p>
           {% if country.visited == True %}
           <i
@@ -18,8 +18,10 @@
           {% else %}
           <i class="fa fa-times fa-2x" aria-hidden="true"></i>
         </p>
+        {% endif %}
+        <p><a href="/countries/{{country.id}}">Click for more info</a></p>
       </li>
-      {% endif %} {% endfor %}
+      {% endfor %}
     </ul>
   </div>
 </div>

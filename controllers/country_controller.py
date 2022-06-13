@@ -13,7 +13,7 @@ def countries():
     return render_template("countries/index.html", all_countries=countries)
 
 
-# Goes to the country's page to list info // code broke
+# Goes to the country's page to list info
 @countries_blueprint.route("/countries/<id>")
 def show(id):
     country = country_repository.select(id)

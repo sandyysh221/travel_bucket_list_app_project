@@ -1,9 +1,9 @@
 class City:
-    def __init__(self, name, country, id=None, visited=False):
+    def __init__(self, name, country, visited=False, id=None):
         self.name = name
         self.country = country
-        self.id = id
         self.visited = visited
+        self.id = id
 
     def set_visited(self):
         self.visited = True

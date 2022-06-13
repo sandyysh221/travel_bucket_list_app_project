@@ -29,7 +29,12 @@ def new_city():
 def create_city():
     name = request.form["name"]
     country = request.form["country"]
-    visited = request.form["completed"]
-    city = City(name, country)
+    new_country = Country(country, None, None)
+    new_country_region = new_country.get_country_by_name(country)["continent"]
+    new_country_code = new_country.get_country_by_name(country)["code"]
+    new_country = Country(country, new_country_region, new_country_code)
+    new_country = country_repository.save(new_country)
+    visited = request.form["visited"]
+    city = City(name, new_country, visited)
     city_repository.save(city)
     return redirect("/cities")

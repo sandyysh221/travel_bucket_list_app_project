@@ -16,8 +16,8 @@ def delete(id):
 
 
 def save(city):
-    sql = "INSERT INTO cities (name, country_id) VALUES (%s, %s) RETURNING id"
-    values = [city.name, city.country.id]
+    sql = "INSERT INTO cities (name, country_id, visited) VALUES (%s, %s, %s) RETURNING id"
+    values = [city.name, city.country.id, city.visited]
     results = run_sql(sql, values)
     city.id = results[0]["id"]
     return city
@@ -29,7 +29,7 @@ def select_all():
     results = run_sql(sql)
     for row in results:
         country = country_repository.select(row["country_id"])
-        city = City(row["name"], country, row["id"])
+        city = City(row["name"], country, row["visited"], row["id"])
         cities.append(city)
     return cities
 
@@ -41,9 +41,11 @@ def select(id):
     result = run_sql(sql, values)[0]
     if result is not None:
         country = country_repository.select(result["country_id"])
-        city = City(result["name"], country, result["id"])
+        city = City(result["name"], country, result["visited"], result["id"])
     return city
 
 
 def update(city):
-    pass
+    sql = "UPDATE cities SET (name, country_id, visited) = (%s, %s, %s) WHERE id = %s"
+    values = [city.name, city.country_id, city.visited, country.id]
+    run_sql(sql, values)

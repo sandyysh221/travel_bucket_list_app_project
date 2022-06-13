@@ -10,6 +10,8 @@ countries_blueprint = Blueprint("country", __name__)
 @countries_blueprint.route("/countries")
 def countries():
     countries = country_repository.select_all()
+    # country = country_repository.select_all().id
+    # city_function = country_repository.find_city_in_country(country)
     return render_template("countries/index.html", all_countries=countries)
 
 
@@ -44,6 +46,7 @@ def update_country(id):
     return redirect("/countries")
 
 
+# Goes to page to add new country
 @countries_blueprint.route("/countries/new", methods=["GET"])
 def new_country():
     countries = country_repository.select_all()
@@ -54,6 +57,7 @@ def new_country():
     )
 
 
+# Adds new country to the list
 @countries_blueprint.route("/countries", methods=["POST"])
 def create_country():
     country = request.form["country"]

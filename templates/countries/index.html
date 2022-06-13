@@ -1,7 +1,9 @@
 {% extends "base.html" %} {% block content %}
-<h1 class="text-center">Bucket list progress on countries:</h1>
+
 <div class="container">
-  <h3><a href="/countries/new">Add New Country</a></h3>
+  <h1 class="text-center">Bucket list progress on countries:</h1>
+
+  <a href="/countries/new" class="button-link">Add New Country</a>
 
   <div>
     <ul class="display-list">
@@ -19,17 +21,22 @@
           alt="{{country.name}}"
         />
         <p>
-          {% if country.visited == True %}
+          Travelled? {% if country.visited == True %}
           <i
-            class="fa fa-check fa-2x"
+            class="fa-solid fa-circle-check fa-xl"
             style="color: green"
             aria-hidden="true"
-          ></i>
+          >
+          </i>
           {% else %}
-          <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+          <i
+            class="fa-solid fa-circle-xmark fa-xl"
+            style="color: red"
+            aria-hidden="true"
+          ></i>
         </p>
         {% endif %}
-        <p><a href="/countries/{{country.id}}">Click for more info</a></p>
+        <p><a href="/countries/{{country.id}}">Read More</a></p>
       </li>
       {% endfor %}
     </ul>

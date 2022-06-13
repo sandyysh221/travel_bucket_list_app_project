@@ -1,7 +1,8 @@
 :root {
   --primary-color: rgb(223, 189, 192);
-  --secondary-color: #21334a;
+  --secondary-color: #e9dce3;
   --accent-color: #93568c;
+  --font-color: #21334a;
   --box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -56,12 +57,34 @@ blockquote {
   font-family: "Eagle Lake", cursive;
 }
 
+.button-link {
+  display: block;
+  margin: 20px auto;
+  background: var(--secondary-color);
+  color: var(--accent-color);
+  font-size: 18px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  transition: all 150ms ease-in-out;
+  max-width: 10rem;
+}
+
+.button-link:hover {
+  opacity: 0.9;
+  cursor: pointer;
+  background: var(--accent-color);
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
 .container {
   margin: 0 auto;
   margin-top: 80px;
   max-width: 90rem;
   background-color: rgb(223, 189, 192, 0.8);
-  color: var(--secondary-color);
+  color: var(--font-color);
   padding: 25px;
   box-shadow: var(--box-shadow);
 }
@@ -97,8 +120,8 @@ blockquote {
 }
 
 .display-box {
-  background-color: #e9dce3;
-  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  border: 1px solid var(--font-color);
   padding: 20px;
   text-align: left;
   margin: 20px;

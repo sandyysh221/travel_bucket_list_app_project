@@ -8,6 +8,16 @@
       {% for country in all_countries %}
       <li class="display-box flex-grow">
         {{country.name}}
+        <img
+          src="https://flagcdn.com/36x27/{{country.code.lower()}}.png"
+          srcset="
+            https://flagcdn.com/72x54/{{country.code.lower()}}.png  2x,
+            https://flagcdn.com/108x81/{{country.code.lower()}}.png 3x
+          "
+          width="36"
+          height="27"
+          alt="{{country.name}}"
+        />
         <p>
           {% if country.visited == True %}
           <i

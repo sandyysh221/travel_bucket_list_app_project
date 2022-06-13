@@ -183,7 +183,7 @@ all_countries_list = [
         "code": "BR",
         "continent": "South America",
         "name": "Brazil",
-        "capital": "Bras\xc3\xadlia",
+        "capital": "Brasília",
     },
     {
         "timezones": ["America/Nassau"],
@@ -287,7 +287,7 @@ all_countries_list = [
         "code": "CM",
         "continent": "Africa",
         "name": "Cameroon",
-        "capital": "Yaound\xc3\xa9",
+        "capital": "Yaoundé",
     },
     {
         "timezones": [
@@ -307,14 +307,14 @@ all_countries_list = [
         "code": "CO",
         "continent": "South America",
         "name": "Colombia",
-        "capital": "Bogot\xc3\xa1",
+        "capital": "Bogotá",
     },
     {
         "timezones": ["America/Costa_Rica"],
         "code": "CR",
         "continent": "North America",
         "name": "Costa Rica",
-        "capital": "San Jos\xc3\xa9",
+        "capital": "San José",
     },
     {
         "timezones": ["America/Havana"],
@@ -571,7 +571,7 @@ all_countries_list = [
         "code": "IS",
         "continent": "Europe",
         "name": "Iceland",
-        "capital": "Reykjav\xc3\xadk",
+        "capital": "Reykjavík",
     },
     {
         "timezones": ["Europe/Rome"],
@@ -767,7 +767,7 @@ all_countries_list = [
         "code": "MV",
         "continent": "Asia",
         "name": "Maldives",
-        "capital": "Mal\xc3\xa9",
+        "capital": "Malé",
     },
     {
         "timezones": ["Africa/Blantyre"],
@@ -937,7 +937,7 @@ all_countries_list = [
         "code": "PY",
         "continent": "South America",
         "name": "Paraguay",
-        "capital": "Asunci\xc3\xb3n",
+        "capital": "Asunción",
     },
     {
         "timezones": ["Asia/Qatar"],
@@ -1078,8 +1078,8 @@ all_countries_list = [
         "timezones": ["Africa/Sao_Tome"],
         "code": "ST",
         "continent": "Africa",
-        "name": "S\xc3\xa3o Tom\xc3\xa9 and Pr\xc3\xadncipe",
-        "capital": "S\xc3\xa3o Tom\xc3\xa9",
+        "name": "São Tomé and Príncipe",
+        "capital": "São Tomé",
     },
     {
         "timezones": ["Asia/Damascus"],
@@ -1093,7 +1093,7 @@ all_countries_list = [
         "code": "TG",
         "continent": "Africa",
         "name": "Togo",
-        "capital": "Lom\xc3\xa9",
+        "capital": "Lomé",
     },
     {
         "timezones": ["Asia/Bangkok"],
@@ -1128,7 +1128,7 @@ all_countries_list = [
         "code": "TO",
         "continent": "Oceania",
         "name": "Tonga",
-        "capital": "Nuku\xca\xbbalofa",
+        "capital": "Nuku'alofa",
     },
     {
         "timezones": ["Europe/Istanbul"],
@@ -1382,7 +1382,7 @@ all_countries_list = [
         "code": "MD",
         "continent": "Europe",
         "name": "Moldova",
-        "capital": "Chi\xc5\x9fin\xc4\x83u",
+        "capital": "Chișinău",
     },
     {
         "timezones": ["Europe/Monaco"],

@@ -14,6 +14,11 @@
   </div>
 
   <select id="country" name="country" class="form-control">
+    <optgroup label="My Countries">
+      {% for country in countries %}
+      <option value="{{ country.name }}">{{ country.name }}</option>
+      {% endfor %}
+    </optgroup>
     <optgroup label="List of Countries">
       {% for new_country in list_of_countries %}
       <option value="{{new_country['name']}}">{{ new_country['name'] }}</option>

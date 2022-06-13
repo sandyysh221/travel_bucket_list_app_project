@@ -12,15 +12,22 @@ cities_blueprint = Blueprint("city", __name__)
 @cities_blueprint.route("/cities")
 def cities():
     cities = city_repository.select_all()
-    return render_template("cities/index.html", all_cities=cities)
+    countries = country_repository.select_all()
+    return render_template(
+        "cities/index.html", all_cities=cities, all_countries=countries
+    )
 
 
 # Goes to page to add new city
 @cities_blueprint.route("/cities/new", methods=["GET"])
 def new_city():
+    countries = country_repository.select_all()
     cities = city_repository.select_all()
     return render_template(
-        "cities/new.html", cities=cities, list_of_countries=list_of_all_countries
+        "cities/new.html",
+        cities=cities,
+        countries=countries,
+        list_of_countries=list_of_all_countries,
     )
 
 

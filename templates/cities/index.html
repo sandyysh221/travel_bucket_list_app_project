@@ -1,17 +1,43 @@
 {% extends "base.html" %} {% block content %}
-<h1>Cities still to kick off the bucket</h1>
+
 <div class="container">
-  <h3><a href="/cities/new">Add New City</a></h3>
-  {% for city in all_cities%}
-  <p>City: <a href="/cities/{{city.id}}">{{city.name}}</a></p>
-
-  <span
-    {% if city.visited == True %}
-    <i class="fa fa-check fa-2x" style="color: green" aria-hidden="true"></i>
-    {% else %}
-    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-    {% endif %}
-  </span>
-
-  {% endfor %}{% endblock %}
+  <h1 class="text-center">Cities still to kick off the bucket</h1>
+  <a href="/cities/new" class="button-link text-center">Add New City</a>
+  <ul class="display-list">
+    {% for city in all_cities%}
+    <li class="display-box flex-grow">
+      <span>{{city.name}}</span>
+      <span
+        ><img
+          src="https://flagcdn.com/36x27/{{city.country.code.lower()}}.png"
+          srcset="
+            https://flagcdn.com/72x54/{{city.country.code.lower()}}.png  2x,
+            https://flagcdn.com/108x81/{{city.country.code.lower()}}.png 3x
+          "
+          width="36"
+          height="27"
+          alt="{{city.country.name}}"
+      /></span>
+      <p>
+        {% if city.visited == True %}
+        <i
+          class="fa-solid fa-circle-check fa-xl"
+          style="color: green"
+          aria-hidden="true"
+        >
+        </i>
+        {% else %}
+        <i
+          class="fa-solid fa-circle-xmark fa-xl"
+          style="color: red"
+          aria-hidden="true"
+        ></i>
+        {% endif %}
+      </p>
+      <p><a href="/cities/{{city.id}}">Read More</a></p>
+      {% endfor %}
+    </li>
+  </ul>
 </div>
+
+{% endblock %}

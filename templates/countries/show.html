@@ -1,20 +1,27 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="container">
-<h3>About {{country.name}}:</h3>
-<span>Region: {{country.region}}</span><br />
-<span>Cities in {{country.name}}:</span><br />
-{% for city in city_in_country %}
-<ul>
-  <li>
-{{city.name}}
-  </li>
-</ul>
-{% endfor %}
-<span><a href="/countries/{{country.id}}/edit">Edit</a></p></span
-><br />
-<span>Mark as visited:</span><br />
-<span>Visited on:</span><br />
+<div class="detail-container">
+  <h3 class="text-center">About {{country.name}}:</h3>
+  <p>Continent: {{country.region}}</p>
+  <p>Cities in {{country.name}} that are on my bucket list:</p>
+  {% for city in city_in_country %}
+  <ul>
+    <li>{{city.name}}</li>
+  </ul>
+  {% endfor %}
+  <p>
+    <a href="/countries/{{country.id}}/edit" class="button-link text-center"
+      >Edit {{country.name}}</a
+    >
+  </p>
+  <form
+    class="visited-country"
+    action="/countries/{{country.id}}"
+    method="post"
+    method="POST"
+  >
+    <button type="submit">Take off the bucket list!</button>
+  </form>
 </div>
 
 {% endblock %}

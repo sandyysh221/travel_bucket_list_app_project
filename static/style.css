@@ -68,7 +68,7 @@ blockquote {
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   transition: all 150ms ease-in-out;
-  max-width: 10rem;
+  max-width: fit-content;
 }
 
 .button-link:hover {
@@ -83,6 +83,16 @@ blockquote {
   margin: 0 auto;
   margin-top: 80px;
   max-width: 90rem;
+  background-color: rgb(223, 189, 192, 0.8);
+  color: var(--font-color);
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+}
+
+.detail-container {
+  margin: 0 auto;
+  margin-top: 80px;
+  max-width: 50rem;
   background-color: rgb(223, 189, 192, 0.8);
   color: var(--font-color);
   padding: 25px;

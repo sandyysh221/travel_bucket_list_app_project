@@ -46,6 +46,15 @@ def update_country(id):
     return redirect("/countries")
 
 
+# # to update country as visited
+# @countries_blueprint.route("/countries/<id>", methods=["POST"])
+# def update_country_as_visited(id):
+#     country = city_repository.select(id)
+#     country.set_visited()
+#     country_repository.update(country)
+#     return redirect("/countries")
+
+
 # Goes to page to add new country
 @countries_blueprint.route("/countries/new", methods=["GET"])
 def new_country():
@@ -66,4 +75,11 @@ def create_country():
     new_country_code = new_country.get_country_by_name(country)["code"]
     new_country = Country(country, new_country_region, new_country_code)
     country_repository.save(new_country)
+    return redirect("/countries")
+
+
+# to delete a country
+@countries_blueprint.route("/countries/<id>/delete", methods=["POST"])
+def delete_country(id):
+    country_repository.delete(id)
     return redirect("/countries")

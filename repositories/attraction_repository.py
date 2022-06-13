@@ -16,12 +16,13 @@ def delete(id):
 
 
 def save(attraction):
-    sql = "INSERT INTO attractions (name, description, city_id, date) VALUES (%s, %s, %s, %s) RETURNING id"
+    sql = "INSERT INTO attractions (name, description, city_id, date, visited) VALUES (%s, %s, %s, %s, %s) RETURNING id"
     values = [
         attraction.name,
         attraction.description,
         attraction.city.id,
         attraction.date,
+        attraction.visited,
     ]
     results = run_sql(sql, values)
     attraction.id = results[0]["id"]
@@ -34,7 +35,9 @@ def select_all():
     results = run_sql(sql)
     for row in results:
         city = city_repository.select(row["city_id"])
-        attraction = Attraction(row["name"], row["description"], city, row["date"])
+        attraction = Attraction(
+            row["name"], row["description"], city, row["date"], row["visited"]
+        )
         attractions.append(attraction)
     return attractions
 
@@ -47,7 +50,11 @@ def select(id):
     if result is not None:
         city = city_repository.select(result["city_id"])
         attraction = Attraction(
-            result["name"], result["description"], city, result["date"]
+            result["name"],
+            result["description"],
+            city,
+            result["date"],
+            result["visited"],
         )
     return attraction
 

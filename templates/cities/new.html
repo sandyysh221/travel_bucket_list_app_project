@@ -1,7 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="detail-container">
-  <h3>Add a new city to the bucket list!</h3>
+  <h3>
+    Add a new city to the bucket list <i class="fa-solid fa-suitcase"></i>
+  </h3>
   <form action="/cities" method="POST">
     <div>
       <label for="name">Name:</label>
@@ -14,25 +16,30 @@
         autofocus
       />
     </div>
-
-    <select id="country" name="country_id" class="form-control">
-      <optgroup label="My Countries">
-        {% for country in countries %}
-        <option value="{{ country.id }}">{{ country.name }}</option>
-        {% endfor %}
-      </optgroup>
-    </select>
-    <p>Don't see a country on the list?</p>
-    <p><a href="/countries/new" class="button-link">Add a country here</a></p>
-
-    <div>
-      <label for="visited">Visited:</label>
-      <select id="visited" name="visited">
-        <option value="true">True</option>
-        <option value="false">False</option>
+    <p>
+      Country:
+      <select id="country" name="country_id" class="form-control">
+        <optgroup label="My Countries">
+          {% for country in countries %}
+          <option value="{{ country.id }}">{{ country.name }}</option>
+          {% endfor %}
+        </optgroup>
       </select>
-    </div>
-    <p><button type="submit">Add New City</button></p>
+    </p>
+    <p>
+      <button type="submit">
+        <i class="fa-solid fa-circle-plus"></i> New City
+      </button>
+    </p>
+    <p>
+      Don't see a country on the list? It's because you'll need to add it as an
+      option first! <i class="fa-solid fa-circle-arrow-down"></i>
+    </p>
+    <p>
+      <a href="/countries/new" class="button-link"
+        ><i class="fa-solid fa-circle-plus"></i> New Country</a
+      >
+    </p>
   </form>
 </div>
 

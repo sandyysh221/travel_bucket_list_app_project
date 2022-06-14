@@ -3,7 +3,7 @@
   --secondary-color: #e9dce3;
   --accent-color: #93568c;
   --font-color: #21334a;
-  --box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  --box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
 }
 
 .text-center {
@@ -61,16 +61,16 @@ blockquote {
 }
 
 button {
-  display: inline-block
+  display: inline-block;
   margin-left: 30%;
   margin-right: 30%;
   background: var(--secondary-color);
   color: var(--accent-color);
   font-size: 1.5rem;
-  padding: 15px 20px;
+  padding: 10px 15px;
   border: none;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--box-shadow);
   transition: all 150ms ease-in-out;
   max-width: fit-content;
 }
@@ -87,10 +87,10 @@ button:hover {
   background: var(--secondary-color);
   color: var(--accent-color);
   font-size: 1.5rem;
-  padding: 15px 20px;
+  padding: 10px 15px;
   border: none;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--box-shadow);
   transition: all 150ms ease-in-out;
   max-width: fit-content;
 }
@@ -195,4 +195,9 @@ footer > a:hover {
 option,
 form > select {
   padding: 10px;
+}
+
+.style-field {
+  padding: 5px;
+  border-radius: 5px;
 }

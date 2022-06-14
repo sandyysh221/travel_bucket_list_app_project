@@ -15,10 +15,10 @@
       />
     </div>
 
-    <select id="country" name="country" class="form-control">
+    <select id="country" name="country_id" class="form-control">
       <optgroup label="My Countries">
         {% for country in countries %}
-        <option value="{{ country.name }}">{{ country.name }}</option>
+        <option value="{{ country.id }}">{{ country.name }}</option>
         {% endfor %}
       </optgroup>
       <optgroup label="List of Countries">

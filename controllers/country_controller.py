@@ -47,13 +47,13 @@ def update_country(id):
     return redirect("/countries")
 
 
-# # to update country as visited
-# @countries_blueprint.route("/countries/<id>", methods=["POST"])
-# def update_country_as_visited(id):
-#     country = city_repository.select(id)
-#     country.set_visited()
-#     country_repository.update(country)
-#     return redirect("/countries")
+# to update country as visited
+@countries_blueprint.route("/countries/<id>", methods=["POST"])
+def update_country_as_visited(id):
+    country = country_repository.select(id)
+    country.set_visited()
+    country_repository.update(country)
+    return redirect("/countries")
 
 
 # Goes to page to add new country

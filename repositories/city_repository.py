@@ -69,3 +69,15 @@ def find_attraction_in_city(city):
         )
         city_attractions.append(attraction)
     return city_attractions
+
+
+def find_city_by_name(city):
+    searched_city = []
+    sql = "SELECT * FROM cities WHERE name = %s"
+    values = [city]
+    results = run_sql(sql, values)
+    for row in results:
+        country = country_repository.select(row["country_id"])
+        city = City(row["name"], country, row["visited"], row["id"])
+        searched_city.append(city)
+    return searched_city

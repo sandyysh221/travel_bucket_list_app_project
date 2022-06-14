@@ -2,11 +2,23 @@
 
 <div class="container">
   <h1>Cities still to kick off the bucket</h1>
-  <a href="/cities/visited" class="button-link">Show Only Visited Cities</a>
-  <a href="/cities/not_visited" class="button-link"
-    >Show Only Unvisited Cities</a
-  >
-  <a href="/cities/new" class="button-link">Add New City</a>
+  <form action="/cities" method="GET">
+    <input
+      type="search"
+      class="form-control"
+      placeholder="Search"
+      aria-label="Search"
+      name="city-searched"
+    />
+    <button type="submit">Search</button>
+  </form>
+  <p>
+    <a href="/cities/visited" class="button-link">Show Only Visited Cities</a>
+    <a href="/cities/not_visited" class="button-link"
+      >Show Only Unvisited Cities</a
+    >
+    <a href="/cities/new" class="button-link">Add New City</a>
+  </p>
   <ul class="display-list">
     {% for city in all_cities%}
     <li class="display-box flex-grow">

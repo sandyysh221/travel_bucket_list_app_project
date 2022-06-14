@@ -11,7 +11,11 @@ cities_blueprint = Blueprint("city", __name__)
 # Goes to Cities homepage listing all the cities in the database
 @cities_blueprint.route("/cities")
 def cities():
-    cities = city_repository.select_all()
+    if request.args:
+        searched_city = request.args["city-searched"]
+        cities = city_repository.find_city_by_name(searched_city)
+    else:
+        cities = city_repository.select_all()
     countries = country_repository.select_all()
     return render_template(
         "cities/index.html", all_cities=cities, all_countries=countries

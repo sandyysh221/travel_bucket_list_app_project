@@ -29,10 +29,10 @@
       >Edit {{country.name}}</a
     >
   </p>
+  {% if country.visited == False %}
   <form
     class="visited-country"
-    action="/countries/{{country.id}}"
-    method="post"
+    action="/countries/{{country.id}}/visited"
     method="POST"
   >
     <button type="submit">
@@ -46,6 +46,7 @@
       🥳
     </button>
   </form>
+  {% endif %}
 </div>
 
 {% endblock %}

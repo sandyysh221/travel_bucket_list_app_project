@@ -48,7 +48,7 @@ def update_country(id):
 
 
 # to update country as visited
-@countries_blueprint.route("/countries/<id>", methods=["POST"])
+@countries_blueprint.route("/countries/<id>/visited", methods=["POST"])
 def update_country_as_visited(id):
     country = country_repository.select(id)
     country.set_visited()

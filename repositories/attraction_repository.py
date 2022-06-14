@@ -36,7 +36,12 @@ def select_all():
     for row in results:
         city = city_repository.select(row["city_id"])
         attraction = Attraction(
-            row["name"], row["description"], city, row["date"], row["visited"]
+            row["name"],
+            row["description"],
+            city,
+            row["date"],
+            row["visited"],
+            row["id"],
         )
         attractions.append(attraction)
     return attractions

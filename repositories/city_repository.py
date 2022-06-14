@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.city import City
+from models.attraction import Attraction
 
 import repositories.country_repository as country_repository
 
@@ -49,3 +50,22 @@ def update(city):
     sql = "UPDATE cities SET (name, country_id, visited) = (%s, %s, %s) WHERE id = %s"
     values = [city.name, city.country.id, city.visited, city.id]
     run_sql(sql, values)
+
+
+def find_attraction_in_city(city):
+    city_attractions = []
+    sql = "SELECT * FROM attractions WHERE city_id = %s"
+    values = [city.id]
+    result = run_sql(sql, values)
+
+    for row in result:
+        attraction = Attraction(
+            row["name"],
+            row["description"],
+            city,
+            row["date"],
+            row["visited"],
+            row["id"],
+        )
+        city_attractions.append(attraction)
+    return city_attractions

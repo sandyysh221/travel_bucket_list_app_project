@@ -1,1 +1,50 @@
-{% extends 'base.html' %} {% block content %} Hello World {% endblock content %}
+{% extends 'base.html' %} {% block content %}
+
+<div class="detail-container">
+  <h3>Add a new attraction to see!</h3>
+  <form action="/attractions" method="POST">
+    <div>
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Attraction"
+        required
+        autofocus
+      />
+    </div>
+
+    <div>
+      <label for="description">Description:</label>
+      <textarea
+        name="description"
+        id="description"
+        cols="25"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div>
+      In:
+      <select id="city" name="city_id" class="form-control">
+        <optgroup label="My Cities">
+          {% for city in cities %}
+          <option value="{{ city.id }}">{{ city.name }}</option>
+          {% endfor %}
+        </optgroup>
+      </select>
+    </div>
+    <div>
+      <label for="visited">Visited:</label>
+      <select id="visited" name="visited">
+        <option value="false">False</option>
+        <option value="true">True</option>
+      </select>
+    </div>
+
+    <p><button type="submit">Add New Attraction</button></p>
+  </form>
+</div>
+
+{% endblock content %}

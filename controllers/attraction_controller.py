@@ -40,3 +40,17 @@ def new_attraction():
         attractions=attractions,
         list_of_countries=list_of_all_countries,
     )
+
+
+# Adds new attraction to the list
+@attractions_blueprint.route("/attractions", methods=["POST"])
+def create_attraction():
+    name = request.form["name"]
+    description = request.form["description"]
+    city_id = request.form["city_id"]
+    city = city_repository.select(city_id)
+    date = None
+    visited = False
+    attraction = Attraction(name, description, city, date, visited)
+    attraction_repository.save(attraction)
+    return redirect("/attractions")

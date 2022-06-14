@@ -61,6 +61,7 @@ blockquote {
 }
 
 button {
+  display: inline-block
   margin-left: 30%;
   margin-right: 30%;
   background: var(--secondary-color);

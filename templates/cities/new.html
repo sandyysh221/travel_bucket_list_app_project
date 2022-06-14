@@ -2,7 +2,7 @@
 
 <div class="detail-container">
   <h3>Add a new city to the bucket list!</h3>
-  <form action="/cities" method="post">
+  <form action="/cities" method="POST">
     <div>
       <label for="name">Name:</label>
       <input
@@ -21,15 +21,9 @@
         <option value="{{ country.id }}">{{ country.name }}</option>
         {% endfor %}
       </optgroup>
-      <optgroup label="List of Countries">
-        {% for new_country in list_of_countries %}
-        <option value="{{new_country['name']}}">
-          {{ new_country['name'] }}
-        </option>
-
-        {% endfor %}
-      </optgroup>
     </select>
+    <p>Don't see a country on the list?</p>
+    <p><a href="/countries/new" class="button-link">Add a country here</a></p>
 
     <div>
       <label for="visited">Visited:</label>

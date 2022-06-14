@@ -16,6 +16,14 @@
       alt="{{city.country.name}}"
     />
   </p>
+
+  <p>Attractions in {{city.name}} that are on my bucket list:</p>
+  {% for attraction in attractions_in_city %}
+  <ul class="bullet-point">
+    <li>{{attraction.name}}</li>
+  </ul>
+  {% endfor %}
+
   <p>
     Visited: {% if city.visited == True %}
     <i

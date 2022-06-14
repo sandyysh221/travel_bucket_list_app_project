@@ -60,6 +60,7 @@ def select(id):
             city,
             result["date"],
             result["visited"],
+            result["id"],
         )
     return attraction
 

@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="detail-container">
+  <h3>Visited Cities:</h3>
+  <ul class="bullet-point">
+    {% for city in cities if city.visited == True %}
+    <li>
+      {{city.name}}
+      <span
+        ><img
+          src="https://flagcdn.com/36x27/{{city.country.code.lower()}}.png"
+          srcset="
+            https://flagcdn.com/72x54/{{city.country.code.lower()}}.png  2x,
+            https://flagcdn.com/108x81/{{city.country.code.lower()}}.png 3x
+          "
+          width="36"
+          height="27"
+          alt="{{city.country.name}}"
+      /></span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock content %}

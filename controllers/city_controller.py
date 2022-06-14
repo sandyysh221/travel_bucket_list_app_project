@@ -82,3 +82,10 @@ def delete_city(id):
 def visited_cities():
     cities = city_repository.select_all()
     return render_template("cities/visited.html", cities=cities)
+
+
+# filtered to show only unvisited cities
+@cities_blueprint.route("/cities/not_visited")
+def unvisited_cities():
+    cities = city_repository.select_all()
+    return render_template("cities/not_visited.html", cities=cities)

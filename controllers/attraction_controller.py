@@ -25,3 +25,18 @@ def attractions():
 def show(id):
     attraction = attraction_repository.select(id)
     return render_template("attractions/show.html", attraction=attraction)
+
+
+# Goes to page to add new attraction
+@attractions_blueprint.route("/attractions/new", methods=["GET"])
+def new_attraction():
+    countries = country_repository.select_all()
+    cities = city_repository.select_all()
+    attractions = attraction_repository.select_all()
+    return render_template(
+        "attractions/new.html",
+        cities=cities,
+        countries=countries,
+        attractions=attractions,
+        list_of_countries=list_of_all_countries,
+    )

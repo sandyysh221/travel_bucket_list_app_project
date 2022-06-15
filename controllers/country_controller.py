@@ -87,3 +87,17 @@ def create_country():
 def delete_country(id):
     country_repository.delete(id)
     return redirect("/countries")
+
+
+# filtered to show only visited countries
+@countries_blueprint.route("/countries/travelled")
+def visited_countries():
+    countries = country_repository.select_all()
+    return render_template("countries/travelled.html", countries=countries)
+
+
+# filtered to show only unvisited countries
+@countries_blueprint.route("/countries/not_travelled")
+def unvisited_countries():
+    countries = country_repository.select_all()
+    return render_template("countries/not_travelled.html", countries=countries)

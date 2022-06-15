@@ -56,6 +56,10 @@ a:hover {
   color: var(--accent-color);
 }
 
+a:visited {
+  color: var(--font-color);
+}
+
 blockquote {
   font-family: "Eagle Lake", cursive;
 }
@@ -143,6 +147,7 @@ footer > a:hover {
   background-color: rgb(223, 189, 192, 0.8);
   color: var(--font-color);
   padding: 25px;
+  padding-bottom: 35px;
   box-shadow: var(--box-shadow);
   text-align: center;
 }
@@ -200,4 +205,9 @@ form > select {
 .style-field {
   padding: 5px;
   border-radius: 5px;
+}
+
+.back-button {
+  position: absolute;
+  margin-top: -15px;
 }

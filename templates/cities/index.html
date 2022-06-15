@@ -6,17 +6,16 @@
     <input
       type="search"
       class="form-control style-field"
-      placeholder="Search"
+      placeholder="📍 Search"
       aria-label="Search"
       name="city-searched"
     />
     <button type="submit">Search</button>
   </form>
   <p>
-    <a href="/cities/visited" class="button-link">Show Only Visited Cities</a>
-    <a href="/cities/not_visited" class="button-link"
-      >Show Only Unvisited Cities</a
-    >
+    <a href="/cities" class="button-link">Show All</a>
+    <a href="/cities/visited" class="button-link">Filter Travelled</a>
+    <a href="/cities/not_visited" class="button-link">Filter Untravelled</a>
     <a href="/cities/new" class="button-link">Add New City</a>
   </p>
   <ul class="display-list">
@@ -35,7 +34,7 @@
           alt="{{city.country.name}}"
       /></span>
       <p>
-        {% if city.visited == True %}
+        Travelled? {% if city.visited == True %}
         <i
           class="fa-solid fa-circle-check fa-xl"
           style="color: green"

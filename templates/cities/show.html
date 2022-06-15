@@ -2,9 +2,8 @@
 
 <div class="detail-container">
   <h3>About {{city.name}}:</h3>
-  <p>Country: {{city.country.name}}</p>
   <p>
-    {{city.country.name}}'s Flag:
+    Country: {{city.country.name}}
     <img
       src="https://flagcdn.com/36x27/{{city.country.code.lower()}}.png"
       srcset="
@@ -25,7 +24,7 @@
   {% endfor %}
 
   <p>
-    Visited: {% if city.visited == True %}
+    Travelled?: {% if city.visited == True %}
     <i
       class="fa-solid fa-circle-check fa-xl"
       style="color: green"
@@ -71,5 +70,11 @@
       </button>
     </form>
   </div>
-  {% endblock %}
+  <div class="back-button">
+    <a href="/cities" class="button-link"
+      ><i class="fa-solid fa-circle-arrow-left"></i
+    ></a>
+  </div>
 </div>
+
+{% endblock %}

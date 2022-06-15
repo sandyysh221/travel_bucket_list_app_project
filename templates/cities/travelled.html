@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="detail-container">
-  <h3>Visited Cities:</h3>
+  <h3>Travel Accomplished Cities:</h3>
   <ul class="bullet-point">
     {% for city in cities if city.visited == True %}
     <li>
@@ -20,6 +20,11 @@
     </li>
     {% endfor %}
   </ul>
-</div>
+  <div class="back-button">
+    <a href="/cities" class="button-link"
+      ><i class="fa-solid fa-circle-arrow-left"></i
+    ></a>
+  </div>
 
-{% endblock content %}
+  {% endblock content %}
+</div>

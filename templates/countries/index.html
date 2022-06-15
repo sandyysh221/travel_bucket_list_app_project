@@ -2,7 +2,24 @@
 
 <div class="container">
   <h1>Countries on the Bucket List</h1>
-  <a href="/countries/new" class="button-link">Add New Country</a>
+  <form action="/cities" method="GET">
+    <input
+      type="search"
+      class="form-control style-field"
+      placeholder="📍 Search"
+      aria-label="Search"
+      name="country-searched"
+    />
+    <button type="submit">Search</button>
+  </form>
+  <p>
+    <a href="/countries" class="button-link">Show All</a>
+    <a href="/countries/travelled" class="button-link">Filter Travelled</a>
+    <a href="/countries/not_travelled" class="button-link"
+      >Filter Untravelled</a
+    >
+    <a href="/countries/new" class="button-link">Add New Country</a>
+  </p>
   <div>
     <ul class="display-list">
       {% for country in all_countries %}

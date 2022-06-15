@@ -70,14 +70,14 @@ def update_attraction(id):
 
 
 # filtered to show only visited attractions
-@attractions_blueprint.route("/attractions/visited")
+@attractions_blueprint.route("/attractions/travelled")
 def visited_attractions():
     attractions = attraction_repository.select_all()
     return render_template("attractions/travelled.html", attractions=attractions)
 
 
 # filtered to show only unvisited attractions
-@attractions_blueprint.route("/attractions/not_visited")
+@attractions_blueprint.route("/attractions/not_travelled")
 def unvisited_attractions():
     attractions = attraction_repository.select_all()
     return render_template("attractions/not_travelled.html", attractions=attractions)

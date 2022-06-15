@@ -1,7 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="detail-container">
-  <h3>About {{country.name}} <img
+  <h3>
+    About {{country.name}}
+    <img
       src="https://flagcdn.com/36x27/{{country.code.lower()}}.png"
       srcset="
         https://flagcdn.com/72x54/{{country.code.lower()}}.png  2x,
@@ -10,8 +12,8 @@
       width="36"
       height="27"
       alt="{{country.name}}"
-    />: </h3>
-  </p>
+    />
+  </h3>
   <p>Country Code: {{country.code}}</p>
   <p>Capital City: {{country.capital}}</p>
   <p>Continent: {{country.region}}</p>
@@ -33,17 +35,18 @@
     method="POST"
   >
     <button type="submit">
-      Been there, done that
+      Update to "Been there, done that
       <i
         class="fa-solid fa-circle-check"
         style="color: green"
         aria-hidden="true"
       >
-      </i>
-      🥳
+      </i
+      >" 🥳
     </button>
   </form>
   {% endif %}
+  <br />
   <div class="back-button">
     <a href="/countries" class="button-link"
       ><i class="fa-solid fa-circle-arrow-left"></i

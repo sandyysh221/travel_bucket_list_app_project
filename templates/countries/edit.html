@@ -1,34 +1,40 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container">
+<div class="detail-container">
   <form action="/countries/{{country.id}}" method="post">
     <div>
-      <label for="name">Country:</label>
-      <input type="text" id="name" name="name" value="{{country.name}}" />
+      <p>
+        <label for="name">Country:</label>
+        <input type="text" id="name" name="name" value="{{country.name}}" />
+      </p>
     </div>
 
     <div>
-      <label for="region">Continent:</label>
-      <input
-        type="text"
-        id="region"
-        name="region"
-        value="{{country.region}}"
-        required
-      />
+      <p>
+        <label for="region">Continent:</label>
+        <input
+          type="text"
+          id="region"
+          name="region"
+          value="{{country.region}}"
+          required
+        />
+      </p>
     </div>
 
     <div>
-      <label for="capital">Capital:</label>
-      <input
-        type="text"
-        id="capital"
-        name="capital"
-        value="{{country.capital}}"
-        required
-      />
+      <p>
+        <label for="capital">Capital:</label>
+        <input
+          type="text"
+          id="capital"
+          name="capital"
+          value="{{country.capital}}"
+          required
+        />
+      </p>
     </div>
 
-    <button type="submit">Update Country</button>
+    <p><button type="submit">Update Country</button></p>
   </form>
 </div>
 

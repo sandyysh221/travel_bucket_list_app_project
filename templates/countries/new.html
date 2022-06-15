@@ -1,7 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="detail-container">
-  <h3>Add a new country to the bucket list!</h3>
+  <h3>
+    Add a new country to the bucket list <i class="fa-solid fa-plane-up"></i>
+  </h3>
   <form action="/countries" method="POST">
     <select id="country" name="country" class="form-control">
       <optgroup label="My Countries">

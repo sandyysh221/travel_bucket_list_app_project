@@ -58,3 +58,33 @@ def create_attraction():
     attraction = Attraction(name, description, city, date, visited)
     attraction_repository.save(attraction)
     return redirect("/attractions")
+
+
+# To update attraction visited to True
+@attractions_blueprint.route("/attractions/<id>", methods=["POST"])
+def update_attraction(id):
+    attraction = attraction_repository.select(id)
+    attraction.set_visited()
+    attraction_repository.update(attraction)
+    return redirect("/attractions")
+
+
+# filtered to show only visited attractions
+@attractions_blueprint.route("/attractions/visited")
+def visited_attractions():
+    attractions = attraction_repository.select_all()
+    return render_template("attractions/travelled.html", attractions=attractions)
+
+
+# filtered to show only unvisited attractions
+@attractions_blueprint.route("/attractions/not_visited")
+def unvisited_attractions():
+    attractions = attraction_repository.select_all()
+    return render_template("attractions/not_travelled.html", attractions=attractions)
+
+
+# to delete an attraction
+@attractions_blueprint.route("/attractions/<id>/delete", methods=["POST"])
+def delete_attraction(id):
+    attraction_repository.delete(id)
+    return redirect("/attractions")

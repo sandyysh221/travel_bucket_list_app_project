@@ -47,6 +47,22 @@
   </form>
   {% endif %}
   <br />
+  <div class="buttons">
+    <form
+      class="delete-country"
+      action="/countries/{{country.id}}/delete"
+      method="POST"
+    >
+      <button class="trash-button">
+        <i
+          class="fa-regular fa-trash-can fa-2x"
+          style="color: red"
+          aria-hidden="true"
+        ></i>
+      </button>
+    </form>
+  </div>
+  <br />
   <div class="back-button">
     <a href="/countries" class="button-link"
       ><i class="fa-solid fa-circle-arrow-left"></i

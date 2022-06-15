@@ -3,8 +3,7 @@
 <div class="detail-container">
   <h3>About {{attraction.name}}</h3>
   <p>{{attraction.description}}</p>
-  <p>{{attraction.city.name}}</p>
-  <p>{{attraction.city.country.name}}</p>
+  <p>{{attraction.city.name}}, {{attraction.city.country.name}}</p>
   <p>
     Visited: {% if attraction.visited == True %}
     <i
@@ -12,15 +11,53 @@
       style="color: green"
       aria-hidden="true"
     >
-    </i><p>{{attraction.date}}</p>
+    </i>
     {% else %}
     <i
       class="fa-solid fa-circle-xmark fa-lg"
       style="color: red"
       aria-hidden="true"
     ></i>
-    {% endif %}
   </p>
-  
+
+  <form
+    class="visited-attraction"
+    action="/attractions/{{attraction.id}}"
+    method="POST"
+  >
+    <button type="submit">
+      Update to "Been there, done that
+      <i
+        class="fa-solid fa-circle-check"
+        style="color: green"
+        aria-hidden="true"
+      >
+      </i
+      >" 🥳
+    </button>
+  </form>
+  {% endif %}
+  <br />
+  <div class="buttons">
+    <form
+      class="delete-attraction"
+      action="/attractions/{{attraction.id}}/delete"
+      method="POST"
+    >
+      <button class="trash-button">
+        <i
+          class="fa-regular fa-trash-can fa-2x"
+          style="color: red"
+          aria-hidden="true"
+        ></i>
+      </button>
+    </form>
+  </div>
+
+  <div class="back-button">
+    <a href="/attractions" class="button-link"
+      ><i class="fa-solid fa-circle-arrow-left"></i
+    ></a>
+  </div>
 </div>
 {% endblock content %}

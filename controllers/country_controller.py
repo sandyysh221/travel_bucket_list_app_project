@@ -9,7 +9,11 @@ countries_blueprint = Blueprint("country", __name__)
 # Goes to Countries homepage listing all the countries in the database
 @countries_blueprint.route("/countries")
 def countries():
-    countries = country_repository.select_all()
+    if request.args:
+        searched_country = request.args["country-searched"]
+        countries = country_repository.find_country_by_name(searched_country)
+    else:
+        countries = country_repository.select_all()
     return render_template("countries/index.html", all_countries=countries)
 
 

@@ -86,3 +86,21 @@ def find_city_in_country(country):
         city = City(row["name"], country, row["id"])
         country_cities.append(city)
     return country_cities
+
+
+def find_country_by_name(country):
+    searched_country = []
+    sql = "SELECT * FROM countries WHERE name = %s"
+    values = [country]
+    results = run_sql(sql, values)
+    for row in results:
+        country = Country(
+            row["name"],
+            row["region"],
+            row["code"],
+            row["capital"],
+            row["visited"],
+            row["id"],
+        )
+        searched_country.append(country)
+    return searched_country

@@ -1,1 +1,30 @@
-{% extends 'base.html' %} {% block content %} Hello World {% endblock content %}
+{% extends 'base.html' %} {% block content %}
+
+<div class="detail-container">
+  <h3>Countries I need to go to still!:</h3>
+  <ul class="bullet-point">
+    {% for country in countries if country.visited == False %}
+    <li>
+      {{country.name}}
+      <span
+        ><img
+          src="https://flagcdn.com/36x27/{{country.code.lower()}}.png"
+          srcset="
+            https://flagcdn.com/72x54/{{country.code.lower()}}.png  2x,
+            https://flagcdn.com/108x81/{{country.code.lower()}}.png 3x
+          "
+          width="36"
+          height="27"
+          alt="{{country.name}}"
+      /></span>
+    </li>
+    {% endfor %}
+  </ul>
+  <div class="back-button">
+    <a href="/countries" class="button-link"
+      ><i class="fa-solid fa-circle-arrow-left"></i
+    ></a>
+  </div>
+
+  {% endblock content %}
+</div>

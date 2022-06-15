@@ -42,10 +42,10 @@ def edit_country(id):
 def update_country(id):
     name = request.form["name"]
     region = request.form["region"]
-    visited = request.form["visited"]
+    visited = False
     print(visited)
     code = country_repository.select(id).code
-    capital = country_repository.select(id).capital
+    capital = request.form["capital"]
     country_update = Country(name, region, code, capital, visited, id)
     country_repository.update(country_update)
     return redirect("/countries")

@@ -1,10 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="detail-container">
-  <h3>About {{country.name}}:</h3>
-  <p>
-    {{country.name}}'s Flag:
-    <img
+  <h3>About {{country.name}} <img
       src="https://flagcdn.com/36x27/{{country.code.lower()}}.png"
       srcset="
         https://flagcdn.com/72x54/{{country.code.lower()}}.png  2x,
@@ -13,7 +10,7 @@
       width="36"
       height="27"
       alt="{{country.name}}"
-    />
+    />: </h3>
   </p>
   <p>Country Code: {{country.code}}</p>
   <p>Capital City: {{country.capital}}</p>
@@ -47,6 +44,11 @@
     </button>
   </form>
   {% endif %}
+  <div class="back-button">
+    <a href="/countries" class="button-link"
+      ><i class="fa-solid fa-circle-arrow-left"></i
+    ></a>
+  </div>
 </div>
 
 {% endblock %}

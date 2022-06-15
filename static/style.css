@@ -49,15 +49,12 @@ header > nav > ul {
 
 a {
   text-decoration: none;
+  color: #54586a;
 }
 
 a:hover {
   text-decoration: underline;
   color: var(--accent-color);
-}
-
-a:visited {
-  color: var(--font-color);
 }
 
 blockquote {

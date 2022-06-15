@@ -1,38 +1,35 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="container">
-    <form action="/countries/{{country.id}}" method="post">
-<div>
-    <label for="name">Country:</label>
-<input type="text" id="name" name="name" value="{{country.name}}">
-  </div>
+  <form action="/countries/{{country.id}}" method="post">
+    <div>
+      <label for="name">Country:</label>
+      <input type="text" id="name" name="name" value="{{country.name}}" />
+    </div>
 
-  <div>
-    <label for="region">Region:</label>
-    <input type="text" id="region" name="region" value="{{country.region}}" required>
-  </div>
+    <div>
+      <label for="region">Continent:</label>
+      <input
+        type="text"
+        id="region"
+        name="region"
+        value="{{country.region}}"
+        required
+      />
+    </div>
 
-  <div>
-    <label for="visited">Visited:</label>
-    <select id="visited" name="visited">
+    <div>
+      <label for="capital">Capital:</label>
+      <input
+        type="text"
+        id="capital"
+        name="capital"
+        value="{{country.capital}}"
+        required
+      />
+    </div>
 
-      <option value="true"
-        {% if country.visited== True %} selected="selected" {% endif %}>
-        True
-      </option>
-
-      <option value="false"
-        {% if country.visited == False %} selected="selected" {% endif %}>
-        False
-      </option>
-
-    </select>
-  </div>
-
-
-  <button type="submit">Update Country</button>
-</form>
+    <button type="submit">Update Country</button>
+  </form>
 </div>
 
-{% endblock  %}
+{% endblock %}

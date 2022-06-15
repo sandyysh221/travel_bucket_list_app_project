@@ -66,4 +66,32 @@ def select(id):
 
 
 def update(attraction):
-    pass
+    sql = "UPDATE attractions SET (name, description, city_id, date, visited) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [
+        attraction.name,
+        attraction.description,
+        attraction.city.id,
+        attraction.date,
+        attraction.visited,
+        attraction.id,
+    ]
+    run_sql(sql, values)
+
+
+def find_attraction_by_name(city):
+    searched_attraction = []
+    sql = "SELECT * FROM attractions WHERE name = %s"
+    values = [city]
+    results = run_sql(sql, values)
+    for row in results:
+        city = city_repository.select(row["city_id"])
+        attraction = Attraction(
+            row["name"],
+            row["description"],
+            city,
+            row["date"],
+            row["visited"],
+            row["id"],
+        )
+        searched_attraction.append(attraction)
+    return searched_attraction

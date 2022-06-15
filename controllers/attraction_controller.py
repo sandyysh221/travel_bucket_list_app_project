@@ -13,7 +13,11 @@ attractions_blueprint = Blueprint("attraction", __name__)
 # Goes to attractions homepage listing all the attractions in the database
 @attractions_blueprint.route("/attractions")
 def attractions():
-    attractions = attraction_repository.select_all()
+    if request.args:
+        searched_attraction = request.args["attraction-searched"]
+        attractions = attraction_repository.find_attraction_by_name(searched_attraction)
+    else:
+        attractions = attraction_repository.select_all()
     cities = city_repository.select_all()
     return render_template(
         "attractions/index.html", all_cities=cities, all_attractions=attractions

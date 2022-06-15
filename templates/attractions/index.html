@@ -1,33 +1,51 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="container">
-  <h1>Attractions to see!</h1>
-  <a href="/attractions/new" class="button-link">Add New Attraction</a>
+  <h1>Attractions on the Bucket List</h1>
+  <form action="/attractions" method="GET">
+    <input
+      type="search"
+      class="form-control style-field"
+      placeholder="📍 Search"
+      aria-label="Search"
+      name="attraction-searched"
+    />
+    <button type="submit">Search</button>
+  </form>
+  <p>
+    <a href="/attractions" class="button-link">Show All</a>
+    <a href="/attractions/visited" class="button-link">Filter Travelled</a>
+    <a href="/attractions/not_visited" class="button-link"
+      >Filter Untravelled</a
+    >
+    <a href="/attractions/new" class="button-link">Add New Attraction</a>
+  </p>
   <ul class="display-list">
     {% for attraction in all_attractions%}
     <li class="display-box flex-grow">
       <p>{{attraction.name}}</p>
-      <p>{{attraction.description}}</p>
       <p>{{attraction.city.name}}</p>
-      <p>{{attraction.city.country.name}}</p>
-      <p>{{attraction.date}}</p>
       <p>
-        {% if attraction.visited == True %}
+        Travelled? {% if attraction.visited == True %}
         <i
-          class="fa-solid fa-circle-check fa-xl"
+          class="fa-solid fa-circle-check fa-lg"
           style="color: green"
           aria-hidden="true"
         >
         </i>
         {% else %}
         <i
-          class="fa-solid fa-circle-xmark fa-xl"
+          class="fa-solid fa-circle-xmark fa-lg"
           style="color: red"
           aria-hidden="true"
         ></i>
         {% endif %}
       </p>
-      <p><a href="/attractions/{{attraction.id}}">Read More</a></p>
+      <p>
+        <a href="/attractions/{{attraction.id}}"
+          >Read More <i class="fa-solid fa-circle-right"></i
+        ></a>
+      </p>
       {% endfor %}
     </li>
   </ul>

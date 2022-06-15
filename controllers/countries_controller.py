@@ -43,7 +43,6 @@ def update_country(id):
     name = request.form["name"]
     region = request.form["region"]
     visited = False
-    print(visited)
     code = country_repository.select(id).code
     capital = request.form["capital"]
     country_update = Country(name, region, code, capital, visited, id)

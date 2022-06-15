@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="detail-container">
-  <h3>About {{attraction.name}}</h3>
-  <p>{{attraction.description}}</p>
-  <p>{{attraction.city.name}}, {{attraction.city.country.name}}</p>
+  <h3>About {{attraction.name}}:</h3>
+  <p>Description: {{attraction.description}}</p>
+  <p>In: {{attraction.city.name}}, {{attraction.city.country.name}}</p>
   <p>
     Visited: {% if attraction.visited == True %}
     <i

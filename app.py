@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 
-from controllers.country_controller import countries_blueprint
-from controllers.city_controller import cities_blueprint
-from controllers.attraction_controller import attractions_blueprint
+from controllers.countries_controller import countries_blueprint
+from controllers.cities_controller import cities_blueprint
+from controllers.attractions_controller import attractions_blueprint
 
 app = Flask(__name__)
 

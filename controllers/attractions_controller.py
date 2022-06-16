@@ -10,7 +10,7 @@ import repositories.attraction_repository as attraction_repository
 
 attractions_blueprint = Blueprint("attraction", __name__)
 
-# Goes to attractions homepage listing all the attractions in the database
+
 @attractions_blueprint.route("/attractions")
 def attractions():
     if request.args:
@@ -24,14 +24,12 @@ def attractions():
     )
 
 
-# Goes to the attraction's page to list info
 @attractions_blueprint.route("/attractions/<id>")
 def show(id):
     attraction = attraction_repository.select(id)
     return render_template("attractions/show.html", attraction=attraction)
 
 
-# Goes to page to add new attraction
 @attractions_blueprint.route("/attractions/new", methods=["GET"])
 def new_attraction():
     countries = country_repository.select_all()
@@ -46,7 +44,6 @@ def new_attraction():
     )
 
 
-# Adds new attraction to the list
 @attractions_blueprint.route("/attractions", methods=["POST"])
 def create_attraction():
     name = request.form["name"]
@@ -60,7 +57,6 @@ def create_attraction():
     return redirect("/attractions")
 
 
-# To update attraction visited to True
 @attractions_blueprint.route("/attractions/<id>", methods=["POST"])
 def update_attraction(id):
     attraction = attraction_repository.select(id)
@@ -69,21 +65,18 @@ def update_attraction(id):
     return redirect("/attractions")
 
 
-# filtered to show only visited attractions
 @attractions_blueprint.route("/attractions/travelled")
 def visited_attractions():
     attractions = attraction_repository.select_all()
     return render_template("attractions/travelled.html", attractions=attractions)
 
 
-# filtered to show only unvisited attractions
 @attractions_blueprint.route("/attractions/not_travelled")
 def unvisited_attractions():
     attractions = attraction_repository.select_all()
     return render_template("attractions/not_travelled.html", attractions=attractions)
 
 
-# to delete an attraction
 @attractions_blueprint.route("/attractions/<id>/delete", methods=["POST"])
 def delete_attraction(id):
     attraction_repository.delete(id)

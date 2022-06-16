@@ -6,7 +6,7 @@ import repositories.country_repository as country_repository
 
 countries_blueprint = Blueprint("country", __name__)
 
-# Goes to Countries homepage listing all the countries in the database
+
 @countries_blueprint.route("/countries")
 def countries():
     if request.args:
@@ -17,7 +17,6 @@ def countries():
     return render_template("countries/index.html", all_countries=countries)
 
 
-# Goes to the country's page to list info
 @countries_blueprint.route("/countries/<id>")
 def show(id):
     country = country_repository.select(id)
@@ -27,7 +26,6 @@ def show(id):
     )
 
 
-# Goes to page to update country
 @countries_blueprint.route("/countries/<id>/edit")
 def edit_country(id):
     country = country_repository.select(id)
@@ -37,7 +35,6 @@ def edit_country(id):
     )
 
 
-# To update a country
 @countries_blueprint.route("/countries/<id>", methods=["POST"])
 def update_country(id):
     name = request.form["name"]
@@ -50,7 +47,6 @@ def update_country(id):
     return redirect("/countries")
 
 
-# to update country as visited
 @countries_blueprint.route("/countries/<id>/visited", methods=["POST"])
 def update_country_as_visited(id):
     country = country_repository.select(id)
@@ -59,7 +55,6 @@ def update_country_as_visited(id):
     return redirect("/countries")
 
 
-# Goes to page to add new country
 @countries_blueprint.route("/countries/new", methods=["GET"])
 def new_country():
     countries = country_repository.select_all()
@@ -70,7 +65,6 @@ def new_country():
     )
 
 
-# Adds new country to the list
 @countries_blueprint.route("/countries", methods=["POST"])
 def create_country():
     country = request.form["country"]
@@ -85,21 +79,18 @@ def create_country():
     return redirect("/countries")
 
 
-# to delete a country
 @countries_blueprint.route("/countries/<id>/delete", methods=["POST"])
 def delete_country(id):
     country_repository.delete(id)
     return redirect("/countries")
 
 
-# filtered to show only visited countries
 @countries_blueprint.route("/countries/travelled")
 def visited_countries():
     countries = country_repository.select_all()
     return render_template("countries/travelled.html", countries=countries)
 
 
-# filtered to show only unvisited countries
 @countries_blueprint.route("/countries/not_travelled")
 def unvisited_countries():
     countries = country_repository.select_all()

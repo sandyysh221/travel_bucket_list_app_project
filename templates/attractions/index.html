@@ -23,7 +23,7 @@
   <ul class="display-list">
     {% for attraction in all_attractions%}
     <li class="display-box flex-grow">
-      <p>{{attraction.name}}</p>
+      <p><em>{{attraction.name}}</em></p>
       <p>{{attraction.city.name}}</p>
       <p>
         Travelled? {% if attraction.visited == True %}
